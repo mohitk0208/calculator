@@ -1,0 +1,19 @@
+.keybase {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.keybase p {
+    font-size: clamp(1rem, 10vw, 3rem);
+}
+
+.blue {
+	color: var(--text-color-alt);
+}
+
+.default {
+    color: var(--text-color);
+}

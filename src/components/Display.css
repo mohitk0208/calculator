@@ -1,0 +1,6 @@
+.display-container {
+    width: 100%;
+    height: 35%;
+    background-color: var(--display);
+    border-bottom: 1px solid var(--text-color);
+}

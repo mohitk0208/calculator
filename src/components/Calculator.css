@@ -1,0 +1,7 @@
+.calculator-container {
+    background-color: var(--keypad-bg);
+    width: 100vw;
+    max-width: 600px;
+    margin: auto;
+    height: 100vh
+}
