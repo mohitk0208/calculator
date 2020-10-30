@@ -1,8 +1,20 @@
-import React from 'react'
-import KeyBase from '../KeyBase'
+import React from "react";
+import { useExpressionUpdater } from "../../../context/ExpressionContext";
+import { useResult, useResultUpdater } from "../../../context/ResultContext";
+import KeyBase from "../KeyBase";
 
 const Equals = () => {
-    return <KeyBase value="=" colored />
-}
+	const result = useResult();
+	const setResult = useResultUpdater();
+	const setExpression = useExpressionUpdater();
 
-export default Equals
+	const equalsHandler = () => {
+		if (result !== "" || result !== "invalid expression") {
+			setExpression(result);
+			setResult("");
+		}
+	};
+	return <KeyBase value="=" colored onClick={equalsHandler} />;
+};
+
+export default Equals;
