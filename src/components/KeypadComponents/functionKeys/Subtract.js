@@ -1,8 +1,27 @@
-import React from 'react'
-import KeyBase from '../KeyBase'
+import React from "react";
+import {
+	useExpression,
+	useExpressionUpdater,
+} from "../../../context/ExpressionContext";
+import KeyBase from "../KeyBase";
+
+const addSubtractValidation = (exp) => {
+	const len = exp.length;
+
+	if (exp[len - 1] === "+" || exp[len - 1] === "-") return false;
+
+	return true;
+};
 
 const Subtract = () => {
-    return <KeyBase value="-" colored />
-}
+	const expression = useExpression();
+	const setExpression = useExpressionUpdater();
 
-export default Subtract
+	const subtractHandler = () => {
+		if (addSubtractValidation(expression)) setExpression((prev) => prev + "-");
+	};
+
+	return <KeyBase value="-" colored onClick={subtractHandler} />;
+};
+
+export default Subtract;
