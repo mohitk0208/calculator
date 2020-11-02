@@ -15,14 +15,14 @@ const compileInputExpression = (exp) => {
 
 	// ***************************************
 	// convert 45. to 45.0
-	expression = expression.replace(/\.(?=[\*\+\-\/])|\.$/g, ".0");
+	expression = expression.replace(/\.(?=[*+-/])|\.$/g, ".0");
 
 	// ***************************************
 	//convert 45%55 to 45*0.01*55
-	expression = expression.replace(/\%(?=[0-9])/g, "*0.01*");
+	expression = expression.replace(/%(?=[0-9])/g, "*0.01*");
 	//convert 54% to 54*0.01
 	//convert 4%/67+2% to 4*0.01/67+2*0.01
-	expression = expression.replace(/\%(?=[\*\/\-\+\% ])|%$/g, "*0.01");
+	expression = expression.replace(/%(?=[*/\-+% ])|%$/g, "*0.01");
 
 	return expression;
 };
@@ -92,11 +92,11 @@ const evaluatePostfix = (postfixArr) => {
 export const calculate = (exp) => {
 	let expression = compileInputExpression(exp);
 
-	expression = expression.replace(/(?<=[\*\/])\-/, "s");
+	expression = expression.replace(/(?<=[*/])-/, "s");
 
 	console.log(expression);
 
-	const infix = expression.split(/(?=[\*\/\+\-])|(?<=[\*\/\+\-])|(?=s)/);
+	const infix = expression.split(/(?=[*/+-])|(?<=[*/+-])|(?=s)/);
 
 	for (let i = 0; i < infix.length; i++) {
 		infix[i] = infix[i].replace("s", "-");
