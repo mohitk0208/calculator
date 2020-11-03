@@ -1,13 +1,14 @@
 :root {
 	--white: #e0e0e0;
 	--black: #222222;
-	--black-faded:#333333;
-	--blue: #00f7ff;
-	--light-blue: #d1fdff;
+	--black-faded: #333333;
+	--blue: #02cdd4;
+	--light-blue: #e9feff;
 	--display: var(--white);
 	--text-color: var(--black);
 	--text-color-alt: var(--blue);
 	--keypad-bg: var(--light-blue);
+	--click-color: var(--blue);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,6 +17,7 @@
 		--text-color: var(--white);
 		--text-color-alt: var(--blue);
 		--keypad-bg: var(--black);
+		--click-color: var(--white);
 	}
 }
 

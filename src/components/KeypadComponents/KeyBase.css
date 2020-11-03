@@ -24,6 +24,6 @@
     content: '';
     width: 19vw;
     height: 19vw;
-    background-color: blue;
+    background-color: var(--click-color);
     border-radius: 100%;	
 }
