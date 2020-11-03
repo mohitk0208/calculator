@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { useExpression } from "./ExpressionContext";
+import {calculate} from "../functions/calculate"
 
 const ResultContext = createContext();
 const ResultUpdateContext = createContext();
@@ -8,6 +10,15 @@ export const useResultUpdater = () => useContext(ResultUpdateContext);
 
 const ResultProvider = ({ children }) => {
 	const [result, setResult] = useState("65");
+	const expression = useExpression();
+
+	useEffect(() =>{
+		const output = calculate(expression);
+		console.log(output);
+		if(isNaN(output)) setResult("");
+		else setResult(output)
+		
+	},[expression])
 
 	return (
 		<>

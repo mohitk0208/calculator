@@ -1,11 +1,13 @@
 const isalphaNumeric = (str) => {
-	if (str === "*" || str === "/" || str === "+" || str === "-") return false;
+	if (str === "*" || str === "/" || str === "+" || str === "-" || str === "%")
+		return false;
 	return true;
 };
 
 const preced = (str) => {
 	if (str === "+" || str === "-") return 1;
 	if (str === "*" || str === "/") return 2;
+	if (str === "%") return 3;
 	return 0;
 };
 
@@ -19,10 +21,10 @@ const compileInputExpression = (exp) => {
 
 	// ***************************************
 	//convert 45%55 to 45*0.01*55
-	expression = expression.replace(/%(?=[0-9])/g, "*0.01*");
+	// expression = expression.replace(/%(?=[0-9])/g, "*0.01*");  no need to convert
 	//convert 54% to 54*0.01
 	//convert 4%/67+2% to 4*0.01/67+2*0.01
-	expression = expression.replace(/%(?=[*/\-+% ])|%$/g, "*0.01");
+	// expression = expression.replace(/%(?=[*/\-+% ])|%$/g, "*0.01"); no need to convert
 
 	return expression;
 };
@@ -64,25 +66,32 @@ const evaluatePostfix = (postfixArr) => {
 		if (isalphaNumeric(postfixEle)) {
 			operands.push(postfixEle);
 		} else {
-			let val1 = Number(operands.pop());
-			let val2 = Number(operands.pop());
+			if (postfixEle === "%") {
+				let val1 = Number(operands.pop());
 
-			switch (postfixEle) {
-				case "+":
-					operands.push(val2 + val1);
-					break;
-				case "-":
-					operands.push(val2 - val1);
-					break;
-				case "*":
-					operands.push(val2 * val1);
-					break;
-				case "/":
-					operands.push(val2 / val1);
-					break;
-				default:
-					break;
+				operands.push(val1 / 100);
+			} else {
+				let val1 = Number(operands.pop());
+				let val2 = Number(operands.pop());
+	
+				switch (postfixEle) {
+					case "+":
+						operands.push(val2 + val1);
+						break;
+					case "-":
+						operands.push(val2 - val1);
+						break;
+					case "*":
+						operands.push(val2 * val1);
+						break;
+					case "/":
+						operands.push(val2 / val1);
+						break;
+					default:
+						break;
+				}
 			}
+	
 		}
 	});
 
@@ -96,7 +105,7 @@ export const calculate = (exp) => {
 
 	console.log(expression);
 
-	const infix = expression.split(/(?=[*/+-])|(?<=[*/+-])|(?=s)/);
+	const infix = expression.split(/(?=[*/+%-])|(?<=[*/+%-])|(?=s)/);
 
 	for (let i = 0; i < infix.length; i++) {
 		infix[i] = infix[i].replace("s", "-");
@@ -105,5 +114,5 @@ export const calculate = (exp) => {
 
 	const postfixArr = infixToPostfix(infix);
 
-	console.log(evaluatePostfix(postfixArr));
+	return evaluatePostfix(postfixArr);
 };
