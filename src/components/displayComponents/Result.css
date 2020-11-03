@@ -4,10 +4,20 @@
 	position: relative;
 }
 
-.result-container h2 {
+.result-container span {
+    text-align: right;
+    width: 100%;
     position: absolute;
     right: 0;
     padding: 2% 3%;
     font-size: clamp(1.5rem,6vw,2rem);
     color: var(--text-color);
+    font-weight: 400;
+    overflow-x: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.result-container span::-webkit-scrollbar{
+    display: none;
 }

@@ -20,6 +20,11 @@ const ResultProvider = ({ children }) => {
 		
 	},[expression])
 
+	useEffect(() => {
+		const obj = document.querySelector(".result-container span");
+		obj.scrollLeft = obj.scrollWidth
+	},[result])
+
 	return (
 		<>
 			<ResultContext.Provider value={result}>

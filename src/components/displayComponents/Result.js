@@ -8,7 +8,7 @@ export const Result = () => {
 
 	return (
 		<div className="result-container">
-			<h2>{result}</h2>
+			<span>{result}</span>
 		</div>
 	);
 };
