@@ -4,11 +4,21 @@
     position: relative;
 }
 
-.expression-container h1 {
+.expression-container span {
+    text-align: right;
+    width: 100%;
     position: absolute;
     bottom: 0;
     right: 0;
     padding: 2% 3%;
     font-size: clamp(2rem,10vw,3rem);
     color: var(--text-color);
+    font-weight: 400;
+    overflow-x: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.expression-container span::-webkit-scrollbar{
+    display: none;
 }

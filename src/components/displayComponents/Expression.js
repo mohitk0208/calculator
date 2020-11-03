@@ -7,7 +7,7 @@ const Expression = () => {
 
 	return (
 		<div className="expression-container">
-			<h1>{expression}</h1>
+			<span>{expression}</span>
 		</div>
 	);
 };
