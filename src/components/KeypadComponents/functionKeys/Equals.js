@@ -9,7 +9,7 @@ const Equals = () => {
 	const setExpression = useExpressionUpdater();
 
 	const equalsHandler = () => {
-		if (result !== "") {
+		if (result !== "" || result !== "Infinity") {
 			setExpression(result);
 			setResult("");
 		}
