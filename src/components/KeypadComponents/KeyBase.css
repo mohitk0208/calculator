@@ -17,3 +17,13 @@
 .default {
     color: var(--text-color);
 }
+ 
+.click-cover {
+	position: absolute;
+    opacity: 0.1;
+    content: '';
+    width: 19vw;
+    height: 19vw;
+    background-color: blue;
+    border-radius: 100%;	
+}
