@@ -17,6 +17,7 @@ const compileInputExpression = (exp) => {
 
 	// ***************************************
 	// convert 45. to 45.0
+	console.log(expression);
 	expression = expression.replace(/\.(?=[*+-/])|\.$/g, ".0");
 
 	// ***************************************
@@ -99,8 +100,12 @@ const evaluatePostfix = (postfixArr) => {
 };
 
 export const calculate = (exp) => {
-	let expression = compileInputExpression(exp);
 
+	if(exp === "") return "";
+
+	let expression = compileInputExpression(exp);
+	
+	expression = expression.replace(/^-/,"s");
 	expression = expression.replace(/(?<=[*/])-/, "s");
 
 	console.log(expression);
@@ -114,5 +119,5 @@ export const calculate = (exp) => {
 
 	const postfixArr = infixToPostfix(infix);
 
-	return evaluatePostfix(postfixArr);
+	return String(evaluatePostfix(postfixArr));
 };

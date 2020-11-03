@@ -9,7 +9,7 @@ const Equals = () => {
 	const setExpression = useExpressionUpdater();
 
 	const equalsHandler = () => {
-		if (result !== "" || result !== "invalid expression") {
+		if (result !== "") {
 			setExpression(result);
 			setResult("");
 		}

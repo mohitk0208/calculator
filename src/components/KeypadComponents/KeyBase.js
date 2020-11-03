@@ -20,7 +20,7 @@ const KeyBase = (props) => {
 
 	return (
 		<div className="keybase" onClick={handleClick}>
-			<div className={clicked && "click-cover"}></div>
+			<div className={clicked ? "click-cover":""}></div>
 			<p className={colored ? "blue color" : "default"}>{value}</p>
 		</div>
 	);
